@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "cash-evidence-app",
+    "name": "Cash Evidence app",
     "slug": "cash-evidence-app",
+    "scheme": "cash-evidence-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
