@@ -1,6 +1,5 @@
-import { Dimensions, Image, Platform, RefreshControl, ScrollView, Text, View } from "react-native";
-import { Redirect, router } from "expo-router";
-import React, { useState } from "react";
+import { Image, ScrollView, Text, View } from "react-native";
+import { router } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView } from "react-native-safe-area-context";
 
