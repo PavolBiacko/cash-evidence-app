@@ -7,7 +7,7 @@ export default function App() {
   return (
     <View className="flex-1 items-center justify-center bg-white">
       <Text className="text-3xl font-pblack">Main Page</Text>
-      <StatusBar style="auto" />
+      <StatusBar style="inverted" />
       <Link href="/home" style={{ color: "blue" }}>Go To Home</Link>
     </View >
   );
