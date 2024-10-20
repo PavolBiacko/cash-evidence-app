@@ -3,7 +3,7 @@ import { Tabs, Redirect } from 'expo-router'
 import { icons } from "../../constants"
 
 import { useCapitalizeWord } from '@/hooks/useUtilHooks'
-import { TabIcon } from '@/components/tabs/TabIcon'
+import { TabIcon } from '@/components/TabIcon'
 
 const tabData = [
   { name: 'home', icon: icons.home },
@@ -17,11 +17,14 @@ const TabsLayout = () => {
     <Tabs
       screenOptions={{
         tabBarShowLabel: false,
+        tabBarActiveTintColor: "#FFA001",
+        tabBarInactiveTintColor: "#CDCDE0",
         tabBarStyle: {
-          alignItems: "center",
-          justifyContent: "center",
-          height: 60,
-        },
+          backgroundColor: "#161622",
+          borderTopWidth: 1,
+          borderTopColor: "#232533",
+          height: 84
+        }
       }}
     >
       {tabData.map((tab) => (
