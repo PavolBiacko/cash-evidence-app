@@ -1,4 +1,4 @@
-import { ImageProps } from "react-native"
+import { ImageProps, KeyboardTypeOptions } from "react-native"
 
 export type TabIconProps = {
   icon: ImageProps,
@@ -13,4 +13,13 @@ export type CustomButtonProps = {
   containerStyles: string,
   textStyles?: string,
   isLoading?: boolean
+}
+
+export type FormFieldProps = {
+  title: string,
+  value: string,
+  handleChangeText: (e: string) => void,
+  otherStyles?: string,
+  placeholder?: string,
+  keyboardType?: KeyboardTypeOptions,
 }
