@@ -1,3 +1,4 @@
+import { Href } from "expo-router"
 import { ImageProps, KeyboardTypeOptions } from "react-native"
 
 export type TabIconProps = {
@@ -15,11 +16,28 @@ export type CustomButtonProps = {
   isLoading?: boolean
 }
 
-export type FormFieldProps = {
-  title: string,
-  value: string,
-  handleChangeText: (e: string) => void,
-  otherStyles?: string,
+type FieldBasics = {
+  title: string;
+  otherStyles?: string;
   placeholder?: string,
   keyboardType?: KeyboardTypeOptions,
+};
+
+export type FormFieldProps = FieldBasics & {
+  value: string,
+  handleChangeText: (e: string) => void,
 }
+
+export type FormData = {
+  [key: string]: string;
+};
+
+export type AuthFormProps = {
+  title: string;
+  fields: FieldBasics[];
+  initialValues: FormData;  // Add this to pass initial values
+  onSubmit: (values: FormData) => void;  // Callback with form values
+  isSubmitting: boolean;
+  linkText: string;
+  linkHref: Href<string>;
+};
