@@ -9,13 +9,13 @@ import CustomButton from '@/components/CustomButton'
 import { images } from "../constants"
 import { useCapitalizeWord } from '@/hooks/useUtilHooks'
 
-const AuthForm: FC<AuthFormProps> = ({ title, fields, initialValues, onSubmit, linkText, linkHref }) => {
+const AuthForm: FC<AuthFormProps> = ({ title, fields, initialValues, onSubmit, linkData }) => {
 
   const [form, setForm] = useState<FormData>(initialValues);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const submit = async () => {
-
+  const handlePress = async () => {
+    await onSubmit(form);
   };
 
   return (
@@ -28,7 +28,7 @@ const AuthForm: FC<AuthFormProps> = ({ title, fields, initialValues, onSubmit, l
           <FormField
             key={title}
             title={useCapitalizeWord(title)}
-            value={form[title]}
+            value={form[title as keyof FormData]}
             placeholder={placeholder}
             handleChangeText={(e: string) => setForm({ ...form, [title]: e })}
             otherStyles={otherStyles || "mt-7"}
@@ -38,14 +38,14 @@ const AuthForm: FC<AuthFormProps> = ({ title, fields, initialValues, onSubmit, l
 
         <CustomButton
           title={title}
-          handlePress={submit}
+          handlePress={handlePress}
           containerStyles="mt-7"
           isLoading={isSubmitting}
         />
 
         <View className="justify-center pt-5 flex-row gap-2">
-          <Text className="text-lg text-gray-100 font-pregular">{linkText}</Text>
-          <Link href={linkHref} className="text-lg font-psemibold text-secondary">{linkText}</Link>
+          <Text className="text-lg text-gray-100 font-pregular">{linkData.prelinkText}</Text>
+          <Link href={linkData.linkHref} className="text-lg font-psemibold text-secondary">{linkData.linkText}</Link>
         </View>
       </View>
     </ScrollView>

@@ -5,7 +5,7 @@ export type TabIconProps = {
   icon: ImageProps,
   color: string,
   name: string,
-  focused: boolean
+  focused: boolean,
 }
 
 export type CustomButtonProps = {
@@ -13,7 +13,7 @@ export type CustomButtonProps = {
   handlePress: () => void,
   containerStyles: string,
   textStyles?: string,
-  isLoading?: boolean
+  isLoading?: boolean,
 }
 
 type FieldBasics = {
@@ -28,16 +28,27 @@ export type FormFieldProps = FieldBasics & {
   handleChangeText: (e: string) => void,
 }
 
-export type FormData = {
-  [key: string]: string;
+export type SignInData = {
+  email: string,
+  password: string,
 };
 
+export type SignUpData = SignInData & {
+  username: string,
+};
+
+export type FormData = SignUpData | SignInData;
+
+type LinkData = {
+  prelinkText: string,
+  linkText: string,
+  linkHref: Href<string>,
+}
+
 export type AuthFormProps = {
-  title: string;
-  fields: FieldBasics[];
-  initialValues: FormData;  // Add this to pass initial values
-  onSubmit: (values: FormData) => void;  // Callback with form values
-  isSubmitting: boolean;
-  linkText: string;
-  linkHref: Href<string>;
+  title: string,
+  fields: FieldBasics[],
+  initialValues: FormData,
+  onSubmit: (values: FormData) => Promise<void>,
+  linkData: LinkData,
 };
