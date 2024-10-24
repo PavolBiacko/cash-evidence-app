@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { FC, useState } from 'react'
 
-import { icons } from "../constants"
+import { icons } from "@/constants"
 import { FormFieldProps } from '@/types/types'
 
 const FormField: FC<FormFieldProps> = ({ title, value, placeholder, handleChangeText, otherStyles, keyboardType }) => {

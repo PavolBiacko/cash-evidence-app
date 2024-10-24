@@ -1,12 +1,12 @@
 import { FC, useState } from 'react'
 import { Link } from 'expo-router'
 import { AuthFormProps, FormData } from '@/types/types'
-import { View, Text, Image, ScrollView } from 'react-native'
+import { View, Text, Image, ScrollView, Alert } from 'react-native'
 
 import FormField from '@/components/FormField'
 import CustomButton from '@/components/CustomButton'
 
-import { images } from "../constants"
+import { images } from "@/constants"
 import { useCapitalizeWord } from '@/hooks/useUtilHooks'
 
 const AuthForm: FC<AuthFormProps> = ({ title, fields, initialValues, onSubmit, linkData }) => {
@@ -14,8 +14,15 @@ const AuthForm: FC<AuthFormProps> = ({ title, fields, initialValues, onSubmit, l
   const [form, setForm] = useState<FormData>(initialValues);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const handlePress = async () => {
-    await onSubmit(form);
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
+    try {
+      await onSubmit(form);
+    } catch (error: any) {
+      Alert.alert("Error", error.message)
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -38,7 +45,7 @@ const AuthForm: FC<AuthFormProps> = ({ title, fields, initialValues, onSubmit, l
 
         <CustomButton
           title={title}
-          handlePress={handlePress}
+          handlePress={handleSubmit}
           containerStyles="mt-7"
           isLoading={isSubmitting}
         />
